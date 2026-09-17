@@ -1,0 +1,1 @@
+export const rupiah=(n:number)=>new Intl.NumberFormat("id-ID",{style:"currency",currency:"IDR",maximumFractionDigits:0}).format(n);export const slugify=(s:string)=>s.toLowerCase().trim().replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"");export const orderNo=()=>`RVK-${Date.now()}-${Math.random().toString(36).slice(2,6).toUpperCase()}`;

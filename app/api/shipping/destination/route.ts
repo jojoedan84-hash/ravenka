@@ -1,0 +1,1 @@
+import{NextResponse}from"next/server";import{destinations}from"@/lib/shipping";export async function GET(req:Request){try{return NextResponse.json({data:await destinations(new URL(req.url).searchParams.get("q")||"")})}catch(e:any){return NextResponse.json({error:e.message},{status:500})}}

@@ -1,0 +1,1 @@
+import{NextResponse}from"next/server";import{isAdmin}from"@/lib/auth";import{prisma}from"@/lib/prisma";import{slugify}from"@/lib/utils";export async function POST(req:Request){if(!await isAdmin())return NextResponse.json({error:"Unauthorized"},{status:401});const{ name }=await req.json();return NextResponse.json(await prisma.category.create({data:{name,slug:slugify(name)}}))}

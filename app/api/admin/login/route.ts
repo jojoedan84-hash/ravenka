@@ -1,0 +1,1 @@
+import{NextResponse}from"next/server";import{login}from"@/lib/auth";export async function POST(req:Request){const{email,password}=await req.json();if(email!==process.env.ADMIN_EMAIL||password!==process.env.ADMIN_PASSWORD)return NextResponse.json({error:"invalid"},{status:401});await login(email);return NextResponse.json({ok:true})}

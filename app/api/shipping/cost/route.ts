@@ -1,0 +1,1 @@
+import{NextResponse}from"next/server";import{ship}from"@/lib/shipping";export async function POST(req:Request){try{const b=await req.json();return NextResponse.json({data:await ship(String(b.destinationId),Number(b.weight),String(b.courier))})}catch(e:any){return NextResponse.json({error:e.message},{status:500})}}

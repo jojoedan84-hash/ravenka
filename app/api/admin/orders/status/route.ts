@@ -1,0 +1,1 @@
+import{NextResponse}from"next/server";import{isAdmin}from"@/lib/auth";import{prisma}from"@/lib/prisma";export async function POST(req:Request){if(!await isAdmin())return NextResponse.json({error:"Unauthorized"},{status:401});const{id,status}=await req.json();return NextResponse.json(await prisma.order.update({where:{id},data:{status}}))}
